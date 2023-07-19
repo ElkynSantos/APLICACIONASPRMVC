@@ -1,0 +1,89 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<APLICACIONASPRMVC.Models.Db.Automobile>
+@{
+    ViewData["Title"] = "Lista de autos";
+}
+
+    <h1 class = "text-center">
+        Welcome 
+    </h1>
+
+    @if (TempData["Mensaje"] != null){
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Mensaje"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    }
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="float-right">
+            <a asp-action="Redireccionar" asp-controller="Home" class="btn btn-success">Nuevo auto</a>
+            </div>
+        </div>
+    </div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+
+        <div class="card border">
+            <div class="card-header">
+                <h3 class="text-center">Lista de usuario</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    @if(Model.Count()>0){
+                        <table class="table table-bordered" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m=>m.Vin)</th>
+                                    <th>@Html.DisplayNameFor(m=>m.AutomobileId)</th>
+                                    <th>@Html.DisplayNameFor(m=>m.Make)</th>
+                   
+                                    <th>@Html.DisplayNameFor(m=>m.Model)</th>
+                                    
+                                    <th>@Html.DisplayNameFor(m=>m.Year)</th
+                                    ><th>@Html.DisplayNameFor(m=>m.BranchOfficeId)</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m=>item.Vin)</td>
+                                        <td>@Html.DisplayFor(m=>item.AutomobileId)</td>
+                                        <td>@Html.DisplayFor(m=>item.Make)</td>
+                                        <td>@Html.DisplayFor(m=>item.Model)</td>
+                                        <td>@Html.DisplayFor(m=>item.Year)</td>
+                                        <td>@Html.DisplayFor(m=>item.BranchOfficeId)</td>
+                                        <td> 
+                                            
+                                            <a class="btn btn-primary" asp-action="Editar" asp-route-id="@item.AutomobileId"> Editar</a>
+                                            <a class="btn btn-primary" asp-action="Borrar" asp-route-id="@item.AutomobileId"> Borrar</a>
+                                        </td>    
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p> No hay registros</p>
+                    }
+                </div>
+
+            </div>
+
+            </div>
+        </div>
+    
+    </div>
+</div>
+
+
+
