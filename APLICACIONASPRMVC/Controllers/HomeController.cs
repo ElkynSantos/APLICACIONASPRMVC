@@ -3,7 +3,7 @@ using APLICACIONASPRMVC.Models.Db;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-
+using System.Linq;
 namespace APLICACIONASPRMVC.Controllers
 {
     public class HomeController : Controller
@@ -26,6 +26,7 @@ namespace APLICACIONASPRMVC.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Index() {
+           // var automobiles = await _context.Automobiles.Where(a=>a.BranchOfficeId==1).ToArrayAsync();
             var automobiles = await _context.Automobiles.ToArrayAsync();
             return View(automobiles);
         }

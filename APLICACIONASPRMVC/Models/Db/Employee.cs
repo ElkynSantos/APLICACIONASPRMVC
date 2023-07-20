@@ -2,7 +2,7 @@
 
 public partial class Employee
  {
-    public int IdEmployee { get; set; }
+    public int? IdEmployee { get; set; }
 
     public string? Name { get; set; }
 
