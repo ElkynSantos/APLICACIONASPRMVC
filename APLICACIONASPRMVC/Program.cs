@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+//Scaffold - DbContext "Server=LAPTOPELKYN7; Database=ABCDataBase; Trusted_Connection=True; trustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer - OutputDir Models / Db
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AbcdataBaseContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ABCDataBase")));
 var app = builder.Build();
